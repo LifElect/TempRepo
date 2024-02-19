@@ -1,0 +1,45 @@
+using System;
+using static System.Console;
+
+namespace ConsoleApp5
+{
+  class SquareMatrix
+  {
+    static Random random = new Random();
+    static int SizeOfMatrix = random.Next(15);
+    int[,] MyMatrix = new int[SizeOfMatrix, SizeOfMatrix];
+    
+    public SquareMatrix()
+    {
+      for (int PosI = 0; PosI < SizeOfMatrix; ++PosI)
+      {
+        for (int PosJ = 0; PosJ < SizeOfMatrix; ++PosJ)
+        {
+          MyMatrix[PosI, PosJ] = random.Next(100);
+        }
+      }
+    }
+
+    public void ShowMatrix()
+    {
+      for (int PosI = 0; PosI < SizeOfMatrix; ++PosI)
+      {
+        for (int PosJ = 0; PosJ < SizeOfMatrix; ++PosJ)
+        {
+          Write(MyMatrix[PosI, PosJ] + "\t");
+        }
+        WriteLine("\n");
+      }
+    }
+  }
+
+  class Program : SquareMatrix
+  {
+    static void Main(string[] args)
+    {
+      SquareMatrix Matrix = new SquareMatrix();
+      Matrix.ShowMatrix();
+      ReadKey();
+    }
+  }
+}
